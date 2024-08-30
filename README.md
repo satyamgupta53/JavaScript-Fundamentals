@@ -60,3 +60,39 @@ async function orderPizza() {
 
 orderPizza();
 ```
+
+**Dom Manipulation** known as Document Object Model. Document is the parent element at the start of the DOM tree. There are the following ways to access the document object in web structure: *Finding the HTML Elements* by id, tag_name, class_name, css_selectors. When there are more than one element returned, *HTML Collection* is returned which is very similar to array-like structure. *Modifying HTML Elements* by innerHTML. Always select an element by id, because it is unique for every element.
+
+```js
+// finding the different elements
+const box1 = document.getElementById('box-1');
+const boxs = document.getElementsByClassName('box-card');
+const divs = document.getElementsByTagName('div');
+const random = document.querySelectorAll('.container .box-card') // returns a node list
+
+// modifying styles & inner HTML
+box1.innerHTML = "BOX A"; 
+box1.style.backgroundColor = "blue";
+
+// manipulating class list
+box1.classList.add('round-border');
+box1.classList.remove('round-border');
+
+// creating a new element
+const newP = document.createElement('p');
+newP.innerHTML = "Hi ! This is changing."
+const container = document.getElementById('container');
+container.appendChild(newP);
+
+```
+![DOM Tree](./readme-assets/dom-tree.png)
+
+**DOM Events** allows you to write JS code that reacts to certain situations. Like mouse clicking, web page loading, a form field changed. There are mainly two way to interact: *using event handler & event listener*. Event handler are as follows: onclick(), onload(), onmouseover(), onmouseout(), onkeypress(), onkeydown(), onkeyup() -- ` onclick=functionName() `. In case of Event Listener, we need to define everything in javascript, starting by selecting the object, ` addEventListener('event_name', callback_function, capture_behaviour) ` function is being used over the object. Multiple events can be triggered over same object. *Bubbling* happens when innermost children takes listener & *Capture* happens when outermost children takes event listener.
+
+```js
+/* Event Listener - event parameter contains all the information related to the event */
+const box2 = document.getElementById('box-2');
+box2.addEventListener('click', (event) => {
+    console.log("Box 2 was clicked : ", event);
+});
+```
